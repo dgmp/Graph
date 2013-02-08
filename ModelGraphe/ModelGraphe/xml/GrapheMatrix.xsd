@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<xsd:schema version="1.0"
+           xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified">
+<xsd:element name="grapheMatrix">
+   <xsd:complexType>
+        <xsd:sequence>
+            <xsd:element name="nbNode" type="xsd:int"/>
+            <xsd:element name="idGraph" type="xsd:int"/>
+            <xsd:element name="name" type="xsd:string"/>
+            <xsd:element ref="node" maxOccurs="unbounded"/>
+            <xsd:element ref="edge" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+</xsd:element>
+</xsd:schema>

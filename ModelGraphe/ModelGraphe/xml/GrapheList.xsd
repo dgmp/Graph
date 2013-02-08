@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<xsd:schema version="1.0"
+           xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified">
+<xsd:element name="grapheList">
+   <xsd:complexType>
+        <xsd:sequence>
+            <xsd:element name="nbNode" type="xsd:int"/>
+            <xsd:element name="idGraph" type="xsd:int"/>
+            <xsd:element name="name" type="xsd:string"/>
+            <xsd:element ref="node" maxOccurs="unbounded"/>
+            <xsd:element ref="edge" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+</xsd:element>
+
+<xsd:element name="node">
+ <xsd:complexType>
+        <xsd:sequence>
+            <xsd:element name="nodeNum" type="xsd:int"/>
+            <xsd:element name="weight" type="xsd:int"/>
+            <xsd:element name="name" type="xsd:string"/>
+            <xsd:element name="visited" type="xsd:boolean"/>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:element>
+
+<xsd:element name="edge">
+ <xsd:complexType>
+        <xsd:sequence>
+            <xsd:element name="nodeA" type="xsd:integer"/>
+            <xsd:element name="nodeB" type="xsd:integer"/>
+            <xsd:element name="weight" type="xsd:integer"/>
+            <xsd:element name="directed" type ="xsd:boolean"/>
+        </xsd:sequence>
+ </xsd:complexType>
+</xsd:element>
+
+</xsd:schema>
