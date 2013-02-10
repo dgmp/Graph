@@ -4,13 +4,11 @@
  */
 package graph.modelgraph;
 
-import generated.Node;
-import java.util.List;
 import junit.framework.TestCase;
 
 /**
  *
- * @author jemorgon1
+ * @author Hyruga
  */
 public class ModelManagerTest extends TestCase {
     
@@ -33,62 +31,68 @@ public class ModelManagerTest extends TestCase {
      */
     public void testGetInstance() {
         System.out.println("getInstance");
-       // ModelManager expResult = null;
+        ModelManager expResult = null;
         ModelManager result = ModelManager.getInstance();
-        assertNotNull(result);
+        assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
+        fail("The test case is a prototype.");
     }
 
     /**
-     * Test of arete method, of class ModelManager.
+     * Test of createGraph method, of class ModelManager.
      */
-    public void testArete() {
-        System.out.println("arete");
-        Node s1 = null;
-        Node s2 = null;
+    public void testCreateGraph() {
+        System.out.println("createGraph");
+        boolean matrix = false;
+        String name = "";
         ModelManager instance = null;
         boolean expResult = false;
-        boolean result = instance.arete(s1, s2);
+        boolean result = instance.createGraph(matrix, name);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of degre method, of class ModelManager.
+     * Test of deleteGrpah method, of class ModelManager.
      */
-    public void testDegre() {
-        System.out.println("degre");
-        Node s = null;
+    public void testDeleteGrpah() {
+        System.out.println("deleteGrpah");
+        int idGraph = 0;
         ModelManager instance = null;
-        int expResult = 0;
-        int result = instance.degre(s);
+        boolean expResult = false;
+        boolean result = instance.deleteGrpah(idGraph);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of add method, of class ModelManager.
+     * Test of addNode method, of class ModelManager.
      */
-    public void testAdd() throws Exception {
-        System.out.println("add");
-        Node s = null;
+    public void testAddNode() {
+        System.out.println("addNode");
+        int idGraph = 0;
+        String label = "";
         ModelManager instance = null;
-        instance.add(s);
+        boolean expResult = false;
+        boolean result = instance.addNode(idGraph, label);
+        assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of delete method, of class ModelManager.
+     * Test of deleteNode method, of class ModelManager.
      */
-    public void testDelete() throws Exception {
-        System.out.println("delete");
-        Node s = null;
+    public void testDeleteNode() {
+        System.out.println("deleteNode");
+        int idGraph = 0;
+        String label = "";
         ModelManager instance = null;
-        instance.delete(s);
+        boolean expResult = false;
+        boolean result = instance.deleteNode(idGraph, label);
+        assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -96,13 +100,16 @@ public class ModelManagerTest extends TestCase {
     /**
      * Test of addArc method, of class ModelManager.
      */
-    public void testAddArc() throws Exception {
+    public void testAddArc() {
         System.out.println("addArc");
-        Node s1 = null;
-        Node s2 = null;
-        int poid = 0;
+        int idGraph = 0;
+        String labelNode1 = "";
+        String labelNode2 = "";
+        int weight = 0;
         ModelManager instance = null;
-        instance.addArc(s1, s2, poid);
+        boolean expResult = false;
+        boolean result = instance.addArc(idGraph, labelNode1, labelNode2, weight);
+        assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -110,12 +117,14 @@ public class ModelManagerTest extends TestCase {
     /**
      * Test of deleteArc method, of class ModelManager.
      */
-    public void testDeleteArc() throws Exception {
+    public void testDeleteArc() {
         System.out.println("deleteArc");
-        Node s1 = null;
-        Node s2 = null;
+        int idGraph = 0;
+        int idArc = 0;
         ModelManager instance = null;
-        instance.deleteArc(s1, s2);
+        boolean expResult = false;
+        boolean result = instance.deleteArc(idGraph, idArc);
+        assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -123,13 +132,16 @@ public class ModelManagerTest extends TestCase {
     /**
      * Test of addEdge method, of class ModelManager.
      */
-    public void testAddEdge() throws Exception {
+    public void testAddEdge() {
         System.out.println("addEdge");
-        Node s1 = null;
-        Node s2 = null;
-        int poid = 0;
+        int idGraph = 0;
+        String labelNode1 = "";
+        String labelNode2 = "";
+        int weight = 0;
         ModelManager instance = null;
-        instance.addEdge(s1, s2, poid);
+        boolean expResult = false;
+        boolean result = instance.addEdge(idGraph, labelNode1, labelNode2, weight);
+        assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -137,25 +149,27 @@ public class ModelManagerTest extends TestCase {
     /**
      * Test of deleteEdge method, of class ModelManager.
      */
-    public void testDeleteEdge() throws Exception {
+    public void testDeleteEdge() {
         System.out.println("deleteEdge");
-        Node s1 = null;
-        Node s2 = null;
+        int idGraph = 0;
+        int idEdge = 0;
         ModelManager instance = null;
-        instance.deleteEdge(s1, s2);
+        boolean expResult = false;
+        boolean result = instance.deleteEdge(idGraph, idEdge);
+        assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of adjacentsNode method, of class ModelManager.
+     * Test of marshaling method, of class ModelManager.
      */
-    public void testAdjacentsNode() {
-        System.out.println("adjacentsNode");
-        Node s = null;
+    public void testMarshaling() {
+        System.out.println("marshaling");
+        int idGraph = 0;
         ModelManager instance = null;
-        List expResult = null;
-        List result = instance.adjacentsNode(s);
+        boolean expResult = false;
+        boolean result = instance.marshalling(idGraph);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");

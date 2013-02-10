@@ -10,6 +10,8 @@ package graph.modelgraph;
 
 import generated.Edge;
 import generated.Node;
+import graph.exception.ArcException;
+import graph.exception.NodeException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -58,28 +60,50 @@ public class GraphMatrix extends Graph{
     }
 
     Edge [][] edge;
-    /**
-     * Gets the value of the edge property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the edge property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getEdge().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Edge }
-     * 
-     * 
-     */
+
+    GraphMatrix(String name,int idGraph) {
+       super();
+       this.name = name;
+       this.idGraph = idGraph;   
+    }
+    
+    @Override
+    public void add(Node s) throws NodeException {
+        super.add(s);
+        Edge[][] Nedge = new Edge[nbNode][nbNode];
+        
+        /*reallocation of matrix */
+        for( int i=0;i<nbNode;++i)
+        {
+            for(int j = 0; j<nbNode; ++j)
+            {
+            Nedge[i][j]= null;
+            }
+        }
+        for( int i=0;i<nbNode-1;++i)
+        {
+            for(int j = 0; j<nbNode-1; ++j)
+            {
+            Nedge[i][j]= edge[i][j];
+            }
+        }
+        
+        edge = Nedge;
+    }
+    @Override
+    public void addArc(Node s1, Node s2, int poid) throws ArcException {
+        
+        if(s1 == null || s2 == null)
+        {
+            throw new ArcException("arc not add");
+        }
+        Edge nEdge = new Edge();
+        nEdge.setNodeA(s1.getNodeNum());
+        nEdge.setNodeB(s2.getNodeNum());
+        nEdge.setWeight(poid);
+        edge[s1.getNodeNum()][s2.getNodeNum()] =nEdge;
+          
+    }
     public Edge[][] getEdge() {
         
         return this.edge;

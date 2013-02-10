@@ -10,6 +10,7 @@ package graph.modelgraph;
 
 import generated.Edge;
 import generated.Node;
+import graph.exception.ArcException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -51,32 +52,30 @@ import javax.xml.bind.annotation.XmlType;
     "edge"
 })
 @XmlRootElement(name = "grapheList")
-public class GraphList {
+public class GraphList extends Graph {
 
-  
-
-    /**
-     * Gets the value of the edge property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the edge property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getEdge().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Edge }
-     * 
-     * 
-     */
+    GraphList(String name,int idGraph) {
+        super();
+        this.name = name;
+        this.idGraph = idGraph;
+    }
+    
+    @Override
+    public void addArc(Node s1, Node s2, int poid) throws ArcException {
+        
+        Edge edge = new Edge();
+        edge.setNodeA(s1.getNodeNum());
+        edge.setNodeB(s2.getNodeNum());
+        edge.setWeight(poid);
+        boolean add;
+        add = s1.getEdge().add(edge);
+        if(!add)
+        {
+         
+            throw new ArcException("Arc not add");
+        }   
+    }
+    
     public List<Edge> getEdge() {
         return null;
     }

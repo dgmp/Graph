@@ -4,17 +4,24 @@
  */
 package graph.modelgraph;
 
-import graph.exception.NodeException;
 import generated.*;
+import graph.exception.ArcException;
+import graph.exception.NodeException;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author jemorgon1
  */
-public class ModelManager implements GraphCRUD {
+public class ModelManager implements InterfaceManager {
     
     private ModelManager() {
+        GList = new LinkedList<>();
+        nbGraph = 0;
+        
     }
     
     public static ModelManager getInstance() {
@@ -27,50 +34,91 @@ public class ModelManager implements GraphCRUD {
 
     
     private static ModelManager instance = null;
-    private Graph G = null;
+    private List<Graph> GList = null;
+    private  int nbGraph;
+    
+    @Override
+    public boolean createGraph(boolean matrix, String name)
+    {   Graph g;
+    
+        if(matrix)
+        {
+            
+            g = new GraphMatrix(name,nbGraph);
+        }
+        else
+        {
+            g= new GraphList(name,nbGraph);
+        }
+        nbGraph++;
+        GList.add(g); 
+        
+        return true;
+        
+    }
 
     @Override
-    public boolean arete(Node s1, Node s2) {
+    public boolean deleteGrpah(int idGraph) {
+         GList.remove(idGraph);
+         return true;
+    }
+    @Override
+    public boolean addNode(int idGraph, String label) {
+        
+        Node s = new Node();
+        s.setName(label);
+        Graph g = GList.get(idGraph);
+        try {
+            g.add(s);
+        } catch (NodeException ex) {
+            Logger.getLogger(ModelManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return true;
+    }
+
+    @Override
+    public boolean deleteNode(int idGraph, String label) {
+        return false;
+    }
+
+    @Override
+    public boolean addArc(int idGraph, String labelNode1, String labelNode2, int weight) {
+        Graph g = GList.get(idGraph);
+        Node s1 = g.getNode(labelNode1);
+        Node s2 = g.getNode(labelNode2);
+        try {
+            g.addArc(s1, s2, weight);
+        } catch (ArcException ex) {
+            Logger.getLogger(ModelManager.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public boolean deleteArc(int idGraph, int idArc) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
-    public int degre(Node s) {
+    public boolean addEdge(int idGraph, String labelNode1, String labelNode2, int weight) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
-    public void add(Node s) throws NodeException {
+    public boolean deleteEdge(int idGraph, int idEdge) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
-    public void delete(Node s) throws NodeException {
+    public boolean marshalling(int idGraph) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
-    public void addArc(Node s1, Node s2, int poid) throws ArcException {
+    public boolean unMarshalling(String file) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
-
-    @Override
-    public void deleteArc(Node s1, Node s2) throws ArcException {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public void addEdge(Node s1, Node s2, int poid) throws AreteException {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public void deleteEdge(Node s1, Node s2) throws AreteException {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public List<Node> adjacentsNode(Node s) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+    
+    
 }
