@@ -175,6 +175,11 @@ public class Graph implements GraphCRUD{
     }
 
     @Override
+    public String toString() {
+        return "Graph{" + "nbNode=" + nbNode + ", idGraph=" + idGraph + ", name=" + name + '}';
+    }
+
+    @Override
     public void delete(Node s) throws NodeException {
         throw new UnsupportedOperationException("Not supported yet.");
     }

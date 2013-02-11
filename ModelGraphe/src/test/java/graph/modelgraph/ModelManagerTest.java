@@ -56,12 +56,12 @@ public class ModelManagerTest extends TestCase {
     /**
      * Test of deleteGrpah method, of class ModelManager.
      */
-    public void testDeleteGrpah() {
+    public void testDeleteGraph() {
         System.out.println("deleteGrpah");
         int idGraph = 0;
         ModelManager instance = null;
         boolean expResult = false;
-        boolean result = instance.deleteGrpah(idGraph);
+        boolean result = instance.deleteGraph(idGraph);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");

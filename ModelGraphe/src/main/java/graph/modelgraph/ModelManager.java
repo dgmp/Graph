@@ -7,6 +7,7 @@ package graph.modelgraph;
 import generated.*;
 import graph.exception.ArcException;
 import graph.exception.NodeException;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Level;
@@ -17,9 +18,11 @@ import java.util.logging.Logger;
  * @author jemorgon1
  */
 public class ModelManager implements InterfaceManager {
-    
+    private static ModelManager instance = null;
+    private HashMap GList;
+    private  int nbGraph;
     private ModelManager() {
-        GList = new LinkedList<>();
+        GList = new HashMap();
         nbGraph = 0;
         
     }
@@ -32,15 +35,19 @@ public class ModelManager implements InterfaceManager {
         return instance;
     }
 
+    @Override
+    public String toString() {
+        return "ModelManager{" +  ", nbGraph=" + GList.size() + '}';
+    }
+
     
-    private static ModelManager instance = null;
-    private List<Graph> GList = null;
-    private  int nbGraph;
+    
     
     @Override
     public boolean createGraph(boolean matrix, String name)
     {   Graph g;
-    
+        g = null;
+        nbGraph++;
         if(matrix)
         {
             
@@ -50,24 +57,32 @@ public class ModelManager implements InterfaceManager {
         {
             g= new GraphList(name,nbGraph);
         }
-        nbGraph++;
-        GList.add(g); 
+       
+        GList.put(nbGraph,g); 
         
         return true;
         
     }
 
     @Override
-    public boolean deleteGrpah(int idGraph) {
+    public boolean deleteGraph(int idGraph) {
          GList.remove(idGraph);
          return true;
     }
+    
+    @Override
+    public Graph get(int idGraph) {
+                
+        return (Graph) GList.get(idGraph);
+    }
+    
+    
     @Override
     public boolean addNode(int idGraph, String label) {
         
         Node s = new Node();
         s.setName(label);
-        Graph g = GList.get(idGraph);
+        Graph g =(Graph) GList.get(idGraph);
         try {
             g.add(s);
         } catch (NodeException ex) {
@@ -83,7 +98,7 @@ public class ModelManager implements InterfaceManager {
 
     @Override
     public boolean addArc(int idGraph, String labelNode1, String labelNode2, int weight) {
-        Graph g = GList.get(idGraph);
+        Graph g = (Graph)GList.get(idGraph);
         Node s1 = g.getNode(labelNode1);
         Node s2 = g.getNode(labelNode2);
         try {
@@ -119,6 +134,8 @@ public class ModelManager implements InterfaceManager {
     public boolean unMarshalling(String file) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
+
+    
     
     
 }

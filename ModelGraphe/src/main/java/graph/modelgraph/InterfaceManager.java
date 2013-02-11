@@ -10,7 +10,8 @@ package graph.modelgraph;
  */
 public interface InterfaceManager {
     public boolean createGraph(boolean matrix, String name);
-    public boolean deleteGrpah(int idGraph);
+    public boolean deleteGraph(int idGraph);
+    public Graph get(int idGraph);
     public boolean addNode(int idGraph,String label);
     public boolean deleteNode(int idGraph,String label);
     public boolean addArc(int idGraph,String labelNode1,String labelNode2,int weight);
