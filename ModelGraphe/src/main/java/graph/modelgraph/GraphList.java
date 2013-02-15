@@ -11,6 +11,7 @@ package graph.modelgraph;
 import generated.Edge;
 import generated.Node;
 import graph.exception.ArcException;
+import graph.exception.NodeException;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -60,7 +61,67 @@ public class GraphList extends Graph {
 
     @Override
     public String toString() {
-        return "GraphList number " + idGraph;
+        String res= "GraphList number " + idGraph + " nbNode " +nbNode ;
+        
+        for (int i =0;i<node.size();i++)
+        {
+           res += "\n" + node.get(i).getName();
+        }
+        return res; 
+    }
+    @Override
+    public void add(Node s) throws NodeException {
+        if(s == null)
+        {
+           throw new NodeException("not add null node");
+        }
+        /*numéro de sommet de 0 à n-1*/
+        s.setNodeNum(numNextNode);
+        node.add(numNextNode,s);
+        nbNode++;
+        numNextNode=nbNode;
+        for(int i = 0;i<node.size();i++)
+        {
+            if(node.get(i).getNodeNum() != i)
+            {
+                numNextNode = i;
+                break;
+            }
+        }
+    }
+    @Override
+    public void delete(Node s) throws NodeException {
+        
+        
+        if(s == null) {
+            throw new NodeException("cannot delete null node");
+        }
+        int numNode = s.getNodeNum();
+        for( int i=0;i<node.size();++i)
+        {
+            if(i == numNode) {
+                continue;
+            }
+            List<Edge> edge = node.get(i).getEdge();
+            for(int j = 0;j<edge.size();j++)
+            {
+                Edge cE =edge.get(i);
+                if(cE.getNodeA() == numNode ||cE.getNodeB() == numNode)
+                {
+                    edge.remove(i);
+                }
+            }
+        }
+        boolean remove = node.remove(s);
+        if(!remove) {
+            throw new NodeException("remove node error");
+        }
+        if(numNextNode >numNode)
+        {
+            numNextNode = numNode;
+        }
+        nbNode--;
+        
     }
     
     @Override
@@ -74,7 +135,6 @@ public class GraphList extends Graph {
         add = s1.getEdge().add(edge);
         if(!add)
         {
-         
             throw new ArcException("Arc not add");
         }   
     }

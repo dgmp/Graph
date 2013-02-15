@@ -56,6 +56,7 @@ import javax.xml.bind.annotation.XmlType;
 public class Graph implements GraphCRUD{
     
     protected int nbNode;
+    protected int numNextNode;
     protected int idGraph;
     @XmlElement(required = true)
     protected String name;
@@ -63,8 +64,10 @@ public class Graph implements GraphCRUD{
     protected List<Node> node;
     
     public Graph() {
-       node = null;
+       
+       node = new ArrayList<>();
        nbNode = 0;
+       numNextNode = 0;
        name = "";
          
     }
@@ -147,9 +150,7 @@ public class Graph implements GraphCRUD{
      * 
      */
     public List<Node> getNode() {
-        if (node == null) {
-            node = new ArrayList<>();
-        }
+        
         return this.node;
     }
 
@@ -165,13 +166,7 @@ public class Graph implements GraphCRUD{
 
     @Override
     public void add(Node s) throws NodeException {
-        if(s == null)
-        {
-           throw new NodeException("not add null node");
-        }
-        s.setNodeNum(nbNode);
-         nbNode++;
-         node.add(s);
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
