@@ -1,0 +1,697 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://soap" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://soap" xmlns:intf="http://soap" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://soap" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="addEdge">
+    <complexType>
+     <sequence>
+      <element name="idGraph" type="xsd:int"/>
+      <element name="labelNode1" type="xsd:string"/>
+      <element name="labelNode2" type="xsd:string"/>
+      <element name="weight" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addEdgeResponse">
+    <complexType>
+     <sequence>
+      <element name="addEdgeReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="test">
+    <complexType/>
+   </element>
+   <element name="testResponse">
+    <complexType>
+     <sequence>
+      <element name="testReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="createGraph">
+    <complexType>
+     <sequence>
+      <element name="matrix" type="xsd:boolean"/>
+      <element name="name" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="createGraphResponse">
+    <complexType>
+     <sequence>
+      <element name="createGraphReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addNode">
+    <complexType>
+     <sequence>
+      <element name="idGraph" type="xsd:int"/>
+      <element name="label" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addNodeResponse">
+    <complexType>
+     <sequence>
+      <element name="addNodeReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deleteGraph">
+    <complexType>
+     <sequence>
+      <element name="idGraph" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deleteGraphResponse">
+    <complexType>
+     <sequence>
+      <element name="deleteGraphReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deleteNode">
+    <complexType>
+     <sequence>
+      <element name="idGraph" type="xsd:int"/>
+      <element name="label" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deleteNodeResponse">
+    <complexType>
+     <sequence>
+      <element name="deleteNodeReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addArc">
+    <complexType>
+     <sequence>
+      <element name="idGraph" type="xsd:int"/>
+      <element name="labelNode1" type="xsd:string"/>
+      <element name="labelNode2" type="xsd:string"/>
+      <element name="weight" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addArcResponse">
+    <complexType>
+     <sequence>
+      <element name="addArcReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="unMarshalling">
+    <complexType>
+     <sequence>
+      <element name="file" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="unMarshallingResponse">
+    <complexType>
+     <sequence>
+      <element name="unMarshallingReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deleteArc">
+    <complexType>
+     <sequence>
+      <element name="idGraph" type="xsd:int"/>
+      <element name="idArc" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deleteArcResponse">
+    <complexType>
+     <sequence>
+      <element name="deleteArcReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deleteEdge">
+    <complexType>
+     <sequence>
+      <element name="idGraph" type="xsd:int"/>
+      <element name="idEdge" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deleteEdgeResponse">
+    <complexType>
+     <sequence>
+      <element name="deleteEdgeReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="marshalling">
+    <complexType>
+     <sequence>
+      <element name="idGraph" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="marshallingResponse">
+    <complexType>
+     <sequence>
+      <element name="marshallingReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="testRequest">
+
+      <wsdl:part element="impl:test" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteArcResponse">
+
+      <wsdl:part element="impl:deleteArcResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="marshallingResponse">
+
+      <wsdl:part element="impl:marshallingResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteNodeRequest">
+
+      <wsdl:part element="impl:deleteNode" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addNodeRequest">
+
+      <wsdl:part element="impl:addNode" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteNodeResponse">
+
+      <wsdl:part element="impl:deleteNodeResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addEdgeResponse">
+
+      <wsdl:part element="impl:addEdgeResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteArcRequest">
+
+      <wsdl:part element="impl:deleteArc" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="createGraphRequest">
+
+      <wsdl:part element="impl:createGraph" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteEdgeRequest">
+
+      <wsdl:part element="impl:deleteEdge" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addEdgeRequest">
+
+      <wsdl:part element="impl:addEdge" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteGraphRequest">
+
+      <wsdl:part element="impl:deleteGraph" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="unMarshallingRequest">
+
+      <wsdl:part element="impl:unMarshalling" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="testResponse">
+
+      <wsdl:part element="impl:testResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="unMarshallingResponse">
+
+      <wsdl:part element="impl:unMarshallingResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addNodeResponse">
+
+      <wsdl:part element="impl:addNodeResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteGraphResponse">
+
+      <wsdl:part element="impl:deleteGraphResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addArcRequest">
+
+      <wsdl:part element="impl:addArc" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="marshallingRequest">
+
+      <wsdl:part element="impl:marshalling" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteEdgeResponse">
+
+      <wsdl:part element="impl:deleteEdgeResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addArcResponse">
+
+      <wsdl:part element="impl:addArcResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="createGraphResponse">
+
+      <wsdl:part element="impl:createGraphResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="GraphsSOAP">
+
+      <wsdl:operation name="addEdge">
+
+         <wsdl:input message="impl:addEdgeRequest" name="addEdgeRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:addEdgeResponse" name="addEdgeResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="test">
+
+         <wsdl:input message="impl:testRequest" name="testRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:testResponse" name="testResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="createGraph">
+
+         <wsdl:input message="impl:createGraphRequest" name="createGraphRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:createGraphResponse" name="createGraphResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addNode">
+
+         <wsdl:input message="impl:addNodeRequest" name="addNodeRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:addNodeResponse" name="addNodeResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteGraph">
+
+         <wsdl:input message="impl:deleteGraphRequest" name="deleteGraphRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:deleteGraphResponse" name="deleteGraphResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteNode">
+
+         <wsdl:input message="impl:deleteNodeRequest" name="deleteNodeRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:deleteNodeResponse" name="deleteNodeResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addArc">
+
+         <wsdl:input message="impl:addArcRequest" name="addArcRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:addArcResponse" name="addArcResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="unMarshalling">
+
+         <wsdl:input message="impl:unMarshallingRequest" name="unMarshallingRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:unMarshallingResponse" name="unMarshallingResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteArc">
+
+         <wsdl:input message="impl:deleteArcRequest" name="deleteArcRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:deleteArcResponse" name="deleteArcResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteEdge">
+
+         <wsdl:input message="impl:deleteEdgeRequest" name="deleteEdgeRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:deleteEdgeResponse" name="deleteEdgeResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="marshalling">
+
+         <wsdl:input message="impl:marshallingRequest" name="marshallingRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:marshallingResponse" name="marshallingResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="GraphsSOAPSoapBinding" type="impl:GraphsSOAP">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="addEdge">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="addEdgeRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="addEdgeResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="test">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="testRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="testResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="createGraph">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="createGraphRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="createGraphResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addNode">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="addNodeRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="addNodeResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteGraph">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="deleteGraphRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="deleteGraphResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteNode">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="deleteNodeRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="deleteNodeResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addArc">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="addArcRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="addArcResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="unMarshalling">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="unMarshallingRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="unMarshallingResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteArc">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="deleteArcRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="deleteArcResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteEdge">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="deleteEdgeRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="deleteEdgeResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="marshalling">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="marshallingRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="marshallingResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="GraphsSOAPService">
+
+      <wsdl:port binding="impl:GraphsSOAPSoapBinding" name="GraphsSOAP">
+
+         <wsdlsoap:address location="http://localhost:8080/Server/services/GraphsSOAP"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
