@@ -89,19 +89,12 @@ public class GraphMatrix extends Graph{
         nbNode++;
         
         /*reallocation of matrix */
-        if(numNextNode == nbNode-1)/*if we add a new not allowed node*/
+        if(numNextNode == maxMat)/*if we add a new not allowed node*/
         {
             Edge[][] Nedge = new Edge[nbNode][nbNode];
-            for( int i=0;i<nbNode;++i)
-            {
-                for(int j = 0; j<nbNode; ++j)
-                {
-                Nedge[i][j]= null;
-                }
-            }
-            for( int i=0;i<nbNode-1;++i)
+            for( int i=0;i<maxMat;++i)
              {
-                for(int j = 0; j<nbNode-1; ++j)
+                for(int j = 0; j<maxMat; ++j)
                 {
                 Nedge[i][j]= edge[i][j];
                 }
@@ -109,6 +102,7 @@ public class GraphMatrix extends Graph{
             edge = Nedge;
             maxMat++;
         }
+        
         numNextNode=nbNode;
         for(int i = 0;i<node.size();i++)
         {
@@ -140,22 +134,21 @@ public class GraphMatrix extends Graph{
     }
     
     @Override
-    public void addArc(Node s1, Node s2, int poid) throws ArcException {
+    public void addArc(Node s1, Node s2, int weight) throws ArcException {
         
         if(s1 == null || s2 == null)
         {
-            throw new ArcException("arc not add");
+            throw new ArcException("arc not add, node null");
         }
         Edge nEdge = new Edge();
         nEdge.setNodeA(s1.getNodeNum());
         nEdge.setNodeB(s2.getNodeNum());
-        nEdge.setWeight(poid);
+        nEdge.setWeight(weight);
         edge[s1.getNodeNum()][s2.getNodeNum()] =nEdge; 
     }
     
     
-    public Edge[][] getEdge() {
-        
+    public Edge[][] getEdge() {  
         return this.edge;
     }
 

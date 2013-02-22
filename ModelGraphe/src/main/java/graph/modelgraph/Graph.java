@@ -68,7 +68,6 @@ public class Graph implements GraphCRUD{
        node = new ArrayList<>();
        nbNode = 0;
        numNextNode = 0;
-
        name = ""; 
     }
     /**
