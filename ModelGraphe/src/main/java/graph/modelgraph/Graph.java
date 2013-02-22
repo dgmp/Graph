@@ -56,10 +56,8 @@ import javax.xml.bind.annotation.XmlType;
 public class Graph implements GraphCRUD{
     
     protected int nbNode;
-<<<<<<< HEAD
-=======
+
     protected int numNextNode;
->>>>>>> b66c29d429bf242a7469eb816a40d981228d8a74
     protected int idGraph;
     @XmlElement(required = true)
     protected String name;
@@ -67,17 +65,11 @@ public class Graph implements GraphCRUD{
     protected List<Node> node;
     
     public Graph() {
-<<<<<<< HEAD
-       node = null;
-       nbNode = 0;
-=======
-       
        node = new ArrayList<>();
        nbNode = 0;
        numNextNode = 0;
->>>>>>> b66c29d429bf242a7469eb816a40d981228d8a74
-       name = "";
-         
+
+       name = ""; 
     }
     /**
      * Obtient la valeur de la propriété nbNode.
