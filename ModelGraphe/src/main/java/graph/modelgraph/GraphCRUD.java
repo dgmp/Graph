@@ -14,7 +14,7 @@ import java.util.List;
  * @author jemorgon1
  */
 public interface GraphCRUD {
-    public boolean arete(Node s1,Node s2);
+    public boolean isEdge(Node s1,Node s2);
     public int degre(Node s);
     public void add(Node s) throws NodeException;
     public  Node getNode(String labelNode);

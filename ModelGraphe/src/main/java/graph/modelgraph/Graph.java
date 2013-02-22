@@ -154,7 +154,7 @@ public class Graph implements GraphCRUD{
     }
 
     @Override
-    public boolean arete(Node s1, Node s2) {
+    public boolean isEdge(Node s1, Node s2) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
