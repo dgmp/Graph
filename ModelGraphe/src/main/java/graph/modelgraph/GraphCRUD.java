@@ -6,7 +6,7 @@ package graph.modelgraph;
 import generated.Node;
 import graph.exception.ArcException;
 import graph.exception.AreteException;
-import graph.exception.NodeException;
+import graph.exception.NodeException; 
 import java.util.List;
 
 /**
