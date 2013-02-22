@@ -57,41 +57,88 @@ public class GraphMatrix extends Graph{
     }
 
     Edge [][] edge;
+    int maxMat;
 
     GraphMatrix(String name,int idGraph) {
        super();
        this.name = name;
-       this.idGraph = idGraph;   
+       this.idGraph = idGraph;
+       maxMat=0;
     }
 
     @Override
     public String toString() {
-        return "GraphMatrix number "+ idGraph;
+        
+                String res= "GraphMatrix number "+ idGraph + " nbNode "+nbNode;
+                for (int i =0;i<node.size();i++)
+                {
+                   res += "\n" + node.get(i).getName();
+                }
+                return res; 
     }
     
     @Override
     public void add(Node s) throws NodeException {
-        super.add(s);
-        Edge[][] Nedge = new Edge[nbNode][nbNode];
+        if(s == null)
+        {
+           throw new NodeException("not add null node");
+        }
+        /*numéro de sommet de 0 à n-1*/
+        s.setNodeNum(numNextNode);
+        node.add(numNextNode,s);
+        nbNode++;
         
         /*reallocation of matrix */
-        for( int i=0;i<nbNode;++i)
+        if(numNextNode == nbNode-1)/*if we add a new not allowed node*/
         {
-            for(int j = 0; j<nbNode; ++j)
+            Edge[][] Nedge = new Edge[nbNode][nbNode];
+            for( int i=0;i<nbNode;++i)
             {
-            Nedge[i][j]= null;
+                for(int j = 0; j<nbNode; ++j)
+                {
+                Nedge[i][j]= null;
+                }
+            }
+            for( int i=0;i<nbNode-1;++i)
+             {
+                for(int j = 0; j<nbNode-1; ++j)
+                {
+                Nedge[i][j]= edge[i][j];
+                }
+            }
+            edge = Nedge;
+            maxMat++;
+        }
+        numNextNode=nbNode;
+        for(int i = 0;i<node.size();i++)
+        {
+            if(node.get(i).getNodeNum() != i)
+            {
+                numNextNode = i;
+                break;
             }
         }
-        for( int i=0;i<nbNode-1;++i)
-        {
-            for(int j = 0; j<nbNode-1; ++j)
-            {
-            Nedge[i][j]= edge[i][j];
-            }
-        }
-        
-        edge = Nedge;
     }
+    
+    @Override
+    public void delete(Node s) throws NodeException {
+        if(s == null) {
+            throw new NodeException("cannot delete null node");
+        }
+
+        int numNode = s.getNodeNum();
+        for(int i=0;i<maxMat;i++)
+        {
+            edge[numNode][i]=null;
+        }
+        if(numNextNode >numNode)
+        {
+            numNextNode = numNode;
+        }
+        node.remove(s);
+        nbNode--;
+    }
+    
     @Override
     public void addArc(Node s1, Node s2, int poid) throws ArcException {
         
@@ -103,9 +150,9 @@ public class GraphMatrix extends Graph{
         nEdge.setNodeA(s1.getNodeNum());
         nEdge.setNodeB(s2.getNodeNum());
         nEdge.setWeight(poid);
-        edge[s1.getNodeNum()][s2.getNodeNum()] =nEdge;
-          
+        edge[s1.getNodeNum()][s2.getNodeNum()] =nEdge; 
     }
+    
     
     public Edge[][] getEdge() {
         

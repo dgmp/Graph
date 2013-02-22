@@ -56,6 +56,10 @@ import javax.xml.bind.annotation.XmlType;
 public class Graph implements GraphCRUD{
     
     protected int nbNode;
+<<<<<<< HEAD
+=======
+    protected int numNextNode;
+>>>>>>> b66c29d429bf242a7469eb816a40d981228d8a74
     protected int idGraph;
     @XmlElement(required = true)
     protected String name;
@@ -63,8 +67,15 @@ public class Graph implements GraphCRUD{
     protected List<Node> node;
     
     public Graph() {
+<<<<<<< HEAD
        node = null;
        nbNode = 0;
+=======
+       
+       node = new ArrayList<>();
+       nbNode = 0;
+       numNextNode = 0;
+>>>>>>> b66c29d429bf242a7469eb816a40d981228d8a74
        name = "";
          
     }
@@ -147,13 +158,11 @@ public class Graph implements GraphCRUD{
      * 
      */
     public List<Node> getNode() {
-        if (node == null) {
-            node = new ArrayList<>();
-        }
         return this.node;
     }
 
     @Override
+
     public boolean isEdge(Node s1, Node s2) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
@@ -165,13 +174,8 @@ public class Graph implements GraphCRUD{
 
     @Override
     public void add(Node s) throws NodeException {
-        if(s == null)
-        {
-           throw new NodeException("not add null node");
-        }
-        s.setNodeNum(nbNode);
-         nbNode++;
-         node.add(s);
+
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override

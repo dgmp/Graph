@@ -1,0 +1,69 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from GraphsSOAPService WSDL service -->
+
+  <service name="GraphsSOAP" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://soap"/>
+      <parameter name="wsdlServiceElement" value="GraphsSOAPService"/>
+      <parameter name="schemaQualified" value="http://soap"/>
+      <parameter name="wsdlServicePort" value="GraphsSOAP"/>
+      <parameter name="className" value="soap.GraphsSOAPSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="GraphsSOAP"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="addEdge" qname="operNS:addEdge" xmlns:operNS="http://soap" returnQName="retNS:addEdgeReturn" xmlns:retNS="http://soap" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:idGraph" xmlns:pns="http://soap" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:labelNode1" xmlns:pns="http://soap" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:labelNode2" xmlns:pns="http://soap" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:weight" xmlns:pns="http://soap" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="test" qname="operNS:test" xmlns:operNS="http://soap" returnQName="retNS:testReturn" xmlns:retNS="http://soap" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+      </operation>
+      <operation name="createGraph" qname="operNS:createGraph" xmlns:operNS="http://soap" returnQName="retNS:createGraphReturn" xmlns:retNS="http://soap" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:matrix" xmlns:pns="http://soap" type="tns:boolean" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:name" xmlns:pns="http://soap" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="addNode" qname="operNS:addNode" xmlns:operNS="http://soap" returnQName="retNS:addNodeReturn" xmlns:retNS="http://soap" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:idGraph" xmlns:pns="http://soap" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:label" xmlns:pns="http://soap" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="deleteGraph" qname="operNS:deleteGraph" xmlns:operNS="http://soap" returnQName="retNS:deleteGraphReturn" xmlns:retNS="http://soap" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:idGraph" xmlns:pns="http://soap" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="deleteNode" qname="operNS:deleteNode" xmlns:operNS="http://soap" returnQName="retNS:deleteNodeReturn" xmlns:retNS="http://soap" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:idGraph" xmlns:pns="http://soap" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:label" xmlns:pns="http://soap" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="addArc" qname="operNS:addArc" xmlns:operNS="http://soap" returnQName="retNS:addArcReturn" xmlns:retNS="http://soap" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:idGraph" xmlns:pns="http://soap" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:labelNode1" xmlns:pns="http://soap" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:labelNode2" xmlns:pns="http://soap" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:weight" xmlns:pns="http://soap" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="unMarshalling" qname="operNS:unMarshalling" xmlns:operNS="http://soap" returnQName="retNS:unMarshallingReturn" xmlns:retNS="http://soap" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:file" xmlns:pns="http://soap" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="deleteArc" qname="operNS:deleteArc" xmlns:operNS="http://soap" returnQName="retNS:deleteArcReturn" xmlns:retNS="http://soap" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:idGraph" xmlns:pns="http://soap" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:idArc" xmlns:pns="http://soap" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="deleteEdge" qname="operNS:deleteEdge" xmlns:operNS="http://soap" returnQName="retNS:deleteEdgeReturn" xmlns:retNS="http://soap" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:idGraph" xmlns:pns="http://soap" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:idEdge" xmlns:pns="http://soap" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="marshalling" qname="operNS:marshalling" xmlns:operNS="http://soap" returnQName="retNS:marshallingReturn" xmlns:retNS="http://soap" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:idGraph" xmlns:pns="http://soap" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="deleteEdge createGraph test addNode addEdge marshalling addArc deleteNode unMarshalling deleteArc deleteGraph"/>
+
+  </service>
+</deployment>

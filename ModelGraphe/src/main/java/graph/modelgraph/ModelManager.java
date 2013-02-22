@@ -8,8 +8,6 @@ import generated.*;
 import graph.exception.ArcException;
 import graph.exception.NodeException;
 import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -72,7 +70,7 @@ public class ModelManager implements InterfaceManager {
     
     @Override
     public Graph get(int idGraph) {
-                
+       
         return (Graph) GList.get(idGraph);
     }
     
@@ -90,9 +88,18 @@ public class ModelManager implements InterfaceManager {
         }
         return true;
     }
-
+    
     @Override
     public boolean deleteNode(int idGraph, String label) {
+        
+        Graph g =(Graph) GList.get(idGraph);
+        Node n =  g.getNode(label);
+        try {
+            g.delete(n);
+        } catch (NodeException ex) {
+            Logger.getLogger(ModelManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         return false;
     }
 
