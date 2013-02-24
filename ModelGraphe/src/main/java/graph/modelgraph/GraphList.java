@@ -91,8 +91,6 @@ public class GraphList extends Graph {
     }
     @Override
     public void delete(Node s) throws NodeException {
-        
-        
         if(s == null) {
             throw new NodeException("cannot delete null node");
         }
@@ -105,10 +103,10 @@ public class GraphList extends Graph {
             List<Edge> edge = node.get(i).getEdge();
             for(int j = 0;j<edge.size();j++)
             {
-                Edge cE =edge.get(i);
+                Edge cE = edge.get(j);
                 if(cE.getNodeA() == numNode ||cE.getNodeB() == numNode)
                 {
-                    edge.remove(i);
+                    edge.remove(j);
                 }
             }
         }
@@ -121,16 +119,15 @@ public class GraphList extends Graph {
             numNextNode = numNode;
         }
         nbNode--;
-        
     }
     
     @Override
-    public void addArc(Node s1, Node s2, int poid) throws ArcException {
+    public void addArc(Node s1, Node s2, int weight) throws ArcException {
         
         Edge edge = new Edge();
         edge.setNodeA(s1.getNodeNum());
         edge.setNodeB(s2.getNodeNum());
-        edge.setWeight(poid);
+        edge.setWeight(weight);
         boolean add;
         add = s1.getEdge().add(edge);
         if(!add)

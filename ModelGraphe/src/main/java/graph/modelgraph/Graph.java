@@ -56,6 +56,7 @@ import javax.xml.bind.annotation.XmlType;
 public class Graph implements GraphCRUD{
     
     protected int nbNode;
+
     protected int numNextNode;
     protected int idGraph;
     @XmlElement(required = true)
@@ -64,12 +65,10 @@ public class Graph implements GraphCRUD{
     protected List<Node> node;
     
     public Graph() {
-       
        node = new ArrayList<>();
        nbNode = 0;
        numNextNode = 0;
-       name = "";
-         
+       name = ""; 
     }
     /**
      * Obtient la valeur de la propriété nbNode.
@@ -150,12 +149,12 @@ public class Graph implements GraphCRUD{
      * 
      */
     public List<Node> getNode() {
-        
         return this.node;
     }
 
     @Override
-    public boolean arete(Node s1, Node s2) {
+
+    public boolean isEdge(Node s1, Node s2) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
@@ -166,6 +165,7 @@ public class Graph implements GraphCRUD{
 
     @Override
     public void add(Node s) throws NodeException {
+
         throw new UnsupportedOperationException("Not supported yet.");
     }
 

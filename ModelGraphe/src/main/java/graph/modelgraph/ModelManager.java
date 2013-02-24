@@ -22,7 +22,6 @@ public class ModelManager implements InterfaceManager {
     private ModelManager() {
         GList = new HashMap();
         nbGraph = 0;
-        
     }
     
     public static ModelManager getInstance() {
@@ -38,9 +37,6 @@ public class ModelManager implements InterfaceManager {
         return "ModelManager{" +  ", nbGraph=" + GList.size() + '}';
     }
 
-    
-    
-    
     @Override
     public boolean createGraph(boolean matrix, String name)
     {   Graph g;
@@ -48,7 +44,6 @@ public class ModelManager implements InterfaceManager {
         nbGraph++;
         if(matrix)
         {
-            
             g = new GraphMatrix(name,nbGraph);
         }
         else
@@ -58,8 +53,7 @@ public class ModelManager implements InterfaceManager {
        
         GList.put(nbGraph,g); 
         
-        return true;
-        
+        return true; 
     }
 
     @Override
@@ -70,10 +64,8 @@ public class ModelManager implements InterfaceManager {
     
     @Override
     public Graph get(int idGraph) {
-       
         return (Graph) GList.get(idGraph);
     }
-    
     
     @Override
     public boolean addNode(int idGraph, String label) {
@@ -140,9 +132,5 @@ public class ModelManager implements InterfaceManager {
     @Override
     public boolean unMarshalling(String file) {
         throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    
-    
-    
+    }  
 }
